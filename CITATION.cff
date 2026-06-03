@@ -1,0 +1,19 @@
+cff-version: 1.2.0
+message: "If you use this software, please cite it as below."
+authors:
+  - family-names: "[Your Last Name]"
+	given-names: "[Your First Name]"
+  - name: "Skippy AI Research Assistant"
+title: "The Genetic-Cultural Flow Engine (GCFE)"
+version: 1.0.0
+date-released: 2025-01-15
+url: "https://github.com/[YOUR_USERNAME]/gcfe-framework"
+repository-code: "https://github.com/[YOUR_USERNAME]/gcfe-framework"
+keywords:
+  - ancient-dna
+  - archaeology
+  - population-genetics
+  - cultural-evolution
+  - historical-analysis
+  - convergent-evolution
+license: MIT
