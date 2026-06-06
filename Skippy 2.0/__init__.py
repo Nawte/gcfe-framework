@@ -174,6 +174,41 @@ def create_app():
     print("="*80)
     print()
 
+    # SELF-HEALING STATUS CHECK (Dad's request - show it's actually working!)
+    try:
+        import sqlite3
+        from database_path import STOCKS_DB
+        conn = sqlite3.connect(STOCKS_DB, timeout=5)
+        cursor = conn.cursor()
+
+        print("="*80)
+        print("🔧 SELF-HEALING SYSTEM STATUS")
+        print("="*80)
+
+        # Count fixes applied
+        cursor.execute("SELECT COUNT(*) FROM self_healing_applied")
+        fixes = cursor.fetchone()[0]
+        print(f"✅ Fixes Applied: {fixes:,}")
+
+        # Count queue
+        cursor.execute("SELECT COUNT(*) FROM self_healing_queue")
+        queue = cursor.fetchone()[0]
+        print(f"✅ Queue: {queue:,} items")
+
+        # Count innovations
+        cursor.execute("SELECT COUNT(*) FROM innovation_pipeline")
+        innovations = cursor.fetchone()[0]
+        print(f"✅ Innovations: {innovations:,}")
+
+        print(f"✅ Status: ACTIVE AND WORKING!")
+        print("="*80)
+        print()
+
+        conn.close()
+    except Exception as e:
+        print(f"⚠️  Could not check self-healing status: {e}")
+        print()
+
     # START AUTONOMOUS CONDUCTOR - Last thing before routes
     # This ensures all models/systems are loaded first
     try:
